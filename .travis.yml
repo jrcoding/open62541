@@ -15,7 +15,6 @@ dist: trusty
 # Make sure we have the git tags. Travis uses shallow checkout where git describe does not work
 git:
   depth: false
-
 matrix:
   fast_finish: true
   include:
@@ -36,10 +35,6 @@ matrix:
             - gcc-mingw-w64-x86-64
             - binutils-mingw-w64-i686
             - g++-multilib
-            # debian packaging
-            - cmake
-            - debhelper
-            - fakeroot
             # doc
             - python-sphinx
             - graphviz
@@ -53,7 +48,6 @@ matrix:
             - valgrind
       env:
         - MINGW=true
-        - DEBIAN=true
 #
 # gcc-8 full host build with tests:
 # doc, cert, linux64,
@@ -194,6 +188,96 @@ matrix:
       env:
         - ANALYZE=true
         - PYTHON=python3
+#
+# gcc (trusty) - Debian packaging
+    - os: linux
+      dist: trusty
+      compiler: gcc
+      addons:
+        apt:
+          packages:
+            - python-six
+            # debian packaging
+            - cmake
+            - devscripts
+            - debhelper
+            - fakeroot
+            # doc
+            - python-sphinx
+            - graphviz
+            - texlive-generic-extra
+            - texlive-fonts-recommended
+            - texlive-latex-extra
+            - latexmk
+            # tests
+            - check
+            - libsubunit-dev
+            - valgrind
+      env:
+        - DEBIAN=true
+        - UBUNTU_RELEASE=Trusty
+#
+#
+# gcc (xenial) - Debian packaging
+    - os: linux
+      dist: xenial
+      compiler: gcc
+      addons:
+        sources:
+          - ubuntu-toolchain-r-test
+        apt:
+          packages:
+            - python-six
+            # debian packaging
+            - cmake
+            - devscripts
+            - debhelper
+            - fakeroot
+            # doc
+            - python-sphinx
+            - python-sphinx-rtd-theme
+            - graphviz
+            - texlive-generic-extra
+            - texlive-fonts-recommended
+            - texlive-latex-extra
+            - latexmk
+            # tests
+            - check
+            - valgrind
+      env:
+        - DEBIAN=true
+        - UBUNTU_RELEASE=Xenial
+#
+#
+# gcc (bionic) - Debian packaging
+    - os: linux
+      dist: bionic
+      compiler: gcc
+      addons:
+        sources:
+          - ubuntu-toolchain-r-test
+        apt:
+          packages:
+            - python-six
+            # debian packaging
+            - cmake
+            - devscripts
+            - debhelper
+            - fakeroot
+            # doc
+            - python-sphinx
+            - python-sphinx-rtd-theme
+            - graphviz
+            - texlive-generic-extra
+            - texlive-fonts-recommended
+            - texlive-latex-extra
+            - latexmk
+            # tests
+            - check
+            - valgrind
+      env:
+        - DEBIAN=true
+        - UBUNTU_RELEASE=Bionic
 #
 # clang-format code analysis
 # is allowed to fail (see allow_failures)
