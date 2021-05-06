@@ -9,6 +9,8 @@ env:
     # For tag builds we do not have the base branch in TRAVIS_BRANCH, therefore store it in BRANCH_FOR_TAG
     - BRANCH_FOR_TAG=$(git ls-remote origin | sed -n "\|$TRAVIS_COMMIT\s\+refs/heads/|{s///p}")
 
+install:
+  - pip install pyOpenSSL ndg-httpsclient pyasn1
 
 dist: trusty
 
