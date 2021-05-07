@@ -8,7 +8,6 @@ env:
     - PYTHON=python2
     # For tag builds we do not have the base branch in TRAVIS_BRANCH, therefore store it in BRANCH_FOR_TAG
     - BRANCH_FOR_TAG=$(git ls-remote origin | sed -n "\|$TRAVIS_COMMIT\s\+refs/heads/|{s///p}")
-    - pip install pyOpenSSL ndg-httpsclient pyasn1
 
 dist: trusty
 
@@ -25,14 +24,13 @@ matrix:
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
       compiler: gcc-4.8
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
             # see https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
             - ubuntu-toolchain-r-test
           packages:
+            - python-openssl
             - mingw-w64
             - gcc-mingw-w64-i686
             - gcc-mingw-w64-x86-64
@@ -58,13 +56,12 @@ matrix:
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
       compiler: gcc-8
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
           packages:
+            - python-openssl
             - gcc-8
             - gcc-8-multilib
             # doc
@@ -83,15 +80,14 @@ matrix:
 # doc, cert, linux64,
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
-      compiler: clang-6.0
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
+      compiler: clang-6.0        
       addons:
         apt:
           sources:
             - llvm-toolchain-trusty-6.0
             - ubuntu-toolchain-r-test
           packages:
+            - python-openssl
             - clang-6.0
             - clang-tidy-6.0
             # doc
@@ -111,14 +107,13 @@ matrix:
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
       compiler: clang-6.0
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
             - llvm-toolchain-trusty-6.0
             - ubuntu-toolchain-r-test
           packages:
+            - python-openssl
             - clang-6.0
             - clang-tidy-6.0
             # doc
@@ -139,8 +134,6 @@ matrix:
 # linux64, minimal-example
     - os: linux
       compiler: clang-6.0
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -157,8 +150,6 @@ matrix:
 # gcc-4.8 static code analysis
     - os: linux
       compiler: gcc
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           packages:
@@ -169,8 +160,6 @@ matrix:
 # clang-6 static code analysis
     - os: linux
       compiler: clang-6.0
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -189,8 +178,6 @@ matrix:
 # is allowed to fail (see allow_failures)
     - os: linux
       compiler: clang-6.0
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -238,8 +225,6 @@ matrix:
 # SONAR gcc-4.9 build
     - os: linux
       compiler: gcc-4.9
-      install:
-        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         sonarcloud:
           organization: open62541
