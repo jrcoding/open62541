@@ -25,12 +25,13 @@ matrix:
     - os: linux
       compiler: gcc-4.8
       addons:
+        install:
+          - pip install requests==2.5.3
         apt:
           sources:
             # see https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
             - ubuntu-toolchain-r-test
           packages:
-            - python-certifi
             - mingw-w64
             - gcc-mingw-w64-i686
             - gcc-mingw-w64-x86-64
@@ -57,11 +58,12 @@ matrix:
     - os: linux
       compiler: gcc-8
       addons:
+        install:
+          - pip install requests==2.5.3
         apt:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - python-certifi
             - gcc-8
             - gcc-8-multilib
             # doc
@@ -87,7 +89,6 @@ matrix:
             - llvm-toolchain-trusty-6.0
             - ubuntu-toolchain-r-test
           packages:
-            - python-certifi
             - clang-6.0
             - clang-tidy-6.0
             # doc
@@ -113,7 +114,6 @@ matrix:
             - llvm-toolchain-trusty-6.0
             - ubuntu-toolchain-r-test
           packages:
-            - python-certifi
             - clang-6.0
             - clang-tidy-6.0
             # doc
