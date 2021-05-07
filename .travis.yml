@@ -25,6 +25,8 @@ matrix:
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
       compiler: gcc-4.8
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -56,6 +58,8 @@ matrix:
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
       compiler: gcc-8
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -80,6 +84,8 @@ matrix:
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
       compiler: clang-6.0
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -105,6 +111,8 @@ matrix:
 # amalgamated, shared, multithread, encryption, discovery, json, test-ns0-full, test-ns0-minimal
     - os: linux
       compiler: clang-6.0
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -131,6 +139,8 @@ matrix:
 # linux64, minimal-example
     - os: linux
       compiler: clang-6.0
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -147,6 +157,8 @@ matrix:
 # gcc-4.8 static code analysis
     - os: linux
       compiler: gcc
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           packages:
@@ -157,6 +169,8 @@ matrix:
 # clang-6 static code analysis
     - os: linux
       compiler: clang-6.0
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -175,6 +189,8 @@ matrix:
 # is allowed to fail (see allow_failures)
     - os: linux
       compiler: clang-6.0
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         apt:
           sources:
@@ -222,6 +238,8 @@ matrix:
 # SONAR gcc-4.9 build
     - os: linux
       compiler: gcc-4.9
+      install:
+        - pip install pyOpenSSL ndg-httpsclient pyasn1
       addons:
         sonarcloud:
           organization: open62541
