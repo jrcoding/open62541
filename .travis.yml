@@ -25,8 +25,6 @@ matrix:
     - os: linux
       compiler: gcc-4.8
       addons:
-        install:
-          - pip install requests==2.5.3
         apt:
           sources:
             # see https://github.com/travis-ci/apt-source-whitelist/blob/master/ubuntu.json
@@ -58,8 +56,6 @@ matrix:
     - os: linux
       compiler: gcc-8
       addons:
-        install:
-          - pip install requests==2.5.3
         apt:
           sources:
             - ubuntu-toolchain-r-test
@@ -257,6 +253,8 @@ cache:
 # combine all the commands into one single command. See https://github.com/travis-ci/travis-ci/issues/1066
 before_install: |
  set -eE
+
+ pip install requests==2.5.3
 
  errorTrap() {
    last_rv=$?
