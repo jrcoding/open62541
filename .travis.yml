@@ -252,9 +252,9 @@ cache:
 
 # combine all the commands into one single command. See https://github.com/travis-ci/travis-ci/issues/1066
 before_install: |
- set -eE
 
  pip install requests==2.5.3
+ set -eE
 
  errorTrap() {
    last_rv=$?
